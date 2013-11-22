@@ -12,7 +12,7 @@
 		<servlet-name>test</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+	<!-- start 字符编码 -->
 	<filter>
 		<filter-name>CharacterFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -25,4 +25,5 @@
 		<filter-name>CharacterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- end 字符编码 -->
 </web-app>
