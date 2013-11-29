@@ -9,15 +9,12 @@
 </head>
 <body>
 
-<sf:form method="post" modelAttribute="user" enctype="multipart/form-data">
+<sf:form method="post" modelAttribute="user">
 	用户名：<sf:input path="username"/><sf:errors path="username"/><br/>
 	密码     ：<sf:password path="password"/><sf:errors path="password"/><br/>
 	昵称     ：<sf:input path="nickname"/><br/>
 	邮箱     ：<sf:input path="email"/><sf:errors path="email"/><br/>
-	Attach1:<input type="file" name="attachs"><br>
-	Attach2:<input type="file" name="attachs"><br>
-	Attach3:<input type="file" name="attachs"><br>
-	<input type="submit" value="添加用户"/>
+	<input type="submit" value="修改用户"/>
 </sf:form>
 </body>
 </html>

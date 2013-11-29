@@ -6,11 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/style.css">
 </head>
 <body>
-<a href="add">添加</a>
+<a href="add">添加</a>-->${loginUser.nickname }<br>
 	<c:forEach items="${users }" var = "um">
-		${um.value.username}--
+		<a href="${um.value.username }">${um.value.username}</a>
+		<a href="${um.value.username}/update">修改</a>
+		<a href="${um.value.username }/delete">删除</a>
+		<br/>
 	</c:forEach>
 </body>
 </html>

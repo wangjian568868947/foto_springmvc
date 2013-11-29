@@ -8,9 +8,23 @@
 
 	<context:component-scan base-package="cn.wangjianlog.controller"/>
 	<mvc:annotation-driven/>
+	<!-- 将静态文件指定到某个特殊的文件夹中统一处理 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000"></property>
+		
+	</bean>
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="cn.wangjianlog.model.UserException">error</prop>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error</prop>
+			</props>
+		</property>
 	</bean>
 </beans>
