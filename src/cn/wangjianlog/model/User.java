@@ -1,20 +1,37 @@
 package cn.wangjianlog.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
+@Table(name="t_user")
 public class User {
 
 	public User(){
 		
 	}
 	
+	private int id;
 	private String username;
 	private String password;
 	private String nickname;
 	private String email;
+	
+	
+	@GeneratedValue
+	@Id
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	@NotEmpty(message="用户名不能为空")
 	public String getUsername() {
 		return username;

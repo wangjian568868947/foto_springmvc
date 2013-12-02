@@ -25,4 +25,33 @@
 		<filter-name>CharacterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- 创建Spring的监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- Spring 的监听器可以通过这个上下文参数来获取beans.xml的位置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:beans.xml</param-value>
+
+	</context-param>
+	
+	<filter>
+		<filter-name>SystemContextFilter</filter-name>
+		<filter-class>cn.wangjianlog.model.SystemContextFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SystemContextFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- Spring中提供了 org.springframework.orm.hibernate3.support.OpenSessionInViewFilter; 
+		这个类来实现OpenSessionInViewer的操作 -->
+	<filter>
+		<filter-name>openSessionInViewerFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>openSessionInViewerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
