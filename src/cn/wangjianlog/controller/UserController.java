@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -24,13 +25,24 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cn.wangjianlog.model.User;
 import cn.wangjianlog.model.UserException;
+import cn.wangjianlog.service.IUserService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	private Map<String,User> users = new HashMap<>(); 
+	private IUserService userService;
 	
+	
+	
+	public IUserService getUserService() {
+		return userService;
+	}
+	@Resource
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
+	}
 	public UserController (){
 		users.put("1", new User("1","1","1","1"));
 		users.put("2", new User("2","2","2","2"));
