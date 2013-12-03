@@ -30,6 +30,7 @@ public class UserService implements IUserService {
 	public void add(User user) {
 		User u = userDao.loadByUsername(user.getUsername());
 		if(u!=null) throw new UserException("用户已经存在");
+		userDao.add(user);
 	}
 
 	@Override

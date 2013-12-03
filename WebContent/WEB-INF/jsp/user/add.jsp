@@ -10,14 +10,41 @@
 <body>
 
 <sf:form method="post" modelAttribute="user" enctype="multipart/form-data">
-	用户名：<sf:input path="username"/><sf:errors path="username"/><br/>
-	密码     ：<sf:password path="password"/><sf:errors path="password"/><br/>
-	昵称     ：<sf:input path="nickname"/><br/>
-	邮箱     ：<sf:input path="email"/><sf:errors path="email"/><br/>
-	Attach1:<input type="file" name="attachs"><br>
-	Attach2:<input type="file" name="attachs"><br>
-	Attach3:<input type="file" name="attachs"><br>
-	<input type="submit" value="添加用户"/>
+	<table width="700" align="center" border="1">
+		<tr>
+			<td>用户名</td>
+			<td><sf:input path="username"/><sf:errors path="username"/></td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td><sf:password path="password"/><sf:errors path="password"/></td>
+		</tr>
+		<tr>
+			<td>昵称</td>
+			<td><sf:input path="nickname"/></td>
+		</tr>
+		<tr>
+			<td>邮箱 </td>
+			<td><sf:input path="email"/><sf:errors path="email"/></td>
+		</tr>
+		<tr>
+			<td>Attach1</td>
+			<td><input type="file" name="attachs"></td>
+		</tr>
+		<tr>
+			<td>Attach1</td>
+			<td><input type="file" name="attachs"></td>
+		</tr>
+		<tr>
+			<td>Attach1</td>
+			<td><input type="file" name="attachs"></td>
+		</tr>
+	</table>
+	<tr>
+	<td colspan="2">
+		<input type="submit" value="用户添加"/>
+	</td>
+	</tr>
 </sf:form>
 </body>
 </html>

@@ -5,15 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>用户${user.nickname }详细信息</title>
 </head>
 <body>
 
 <sf:form method="post" modelAttribute="user">
-	用户名：${user.username }<br/>
-	密码     ：${user.password }<br/>
-	昵称     ：${user.nickname }<br/>
-	邮箱     ：${user.email }<br/>
+	<table width="700" align="center" border="1">
+		<tr>
+			<td>用户名</td>
+			<td>${user.username }</td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td>${user.password }</td>
+		</tr>
+		<tr>
+			<td>昵称</td>
+			<td>${user.nickname }</td>
+		</tr>
+		<tr>
+			<td>邮箱 </td>
+			<td>${user.email }</td>
+		</tr>
+		
+	</table>
+
+	
 </sf:form>
 </body>
 </html>

@@ -5,16 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>用户添加</title>
 </head>
 <body>
 
-<sf:form method="post" modelAttribute="user">
-	用户名：<sf:input path="username"/><sf:errors path="username"/><br/>
-	密码     ：<sf:password path="password"/><sf:errors path="password"/><br/>
-	昵称     ：<sf:input path="nickname"/><br/>
-	邮箱     ：<sf:input path="email"/><sf:errors path="email"/><br/>
-	<input type="submit" value="修改用户"/>
+<sf:form method="post" modelAttribute="user" enctype="multipart/form-data">
+	<table width="700" align="center" border="1">
+		<tr>
+			<td>用户名</td>
+			<td>${user.username }<sf:hidden path="username"/></td>
+		</tr>
+		
+		<tr>
+			<td>昵称</td>
+			<td><sf:input path="nickname"/></td>
+		</tr>
+		<tr>
+			<td>邮箱 </td>
+			<td><sf:input path="email"/><sf:errors path="email"/></td>
+		</tr>
+	
+	</table>
+	<tr>
+	<td colspan="2">
+		<input type="submit" value="用户更新"/>
+	</td>
+	</tr>
 </sf:form>
 </body>
 </html>

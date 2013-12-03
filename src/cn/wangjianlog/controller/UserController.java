@@ -49,9 +49,10 @@ public class UserController {
 		users.put("3", new User("3","3","3","3"));
 		users.put("4", new User("4","4","4","4"));
 	}
-	@RequestMapping(value = "/users",method=RequestMethod.GET)
+	@RequestMapping(value = {"/users","/"},method=RequestMethod.GET)
 	public String list(Model model){
-		model.addAttribute("users", users);
+		
+		model.addAttribute("pagers", userService.find());
 		return "user/list";
 	}
 	@RequestMapping(value="/add",method=RequestMethod.GET)
@@ -78,43 +79,45 @@ public class UserController {
 			}
 			System.out.println(attach.getName()+","+attach.getOriginalFilename()+","+attach.getContentType());
 		}
-		users.put(user.getUsername(), user);
+		userService.add(user);
 		return "redirect:/user/users";
 	}
-	@RequestMapping(value = "/{username}",method=RequestMethod.GET)
-	public String show(@PathVariable String username ,Model model){
-		model.addAttribute(users.get(username));
-		
+
+	@RequestMapping(value = "/{id}",method=RequestMethod.GET)
+	public String show(@PathVariable int id ,Model model){
+		System.out.println("-----");
+		model.addAttribute(userService.load(id));
 		return "user/show";
 	}
 	
-	@RequestMapping(value = "/{username}",method=RequestMethod.GET,params="json")
+	@RequestMapping(value = "/{id}",method=RequestMethod.GET,params="json")
 	@ResponseBody
-	public User show(@PathVariable String username){
-		return users.get(username);
+	public User show(@PathVariable int id){
+		return userService.load(id);
 	}
 	
-	@RequestMapping(value="/{username}/update",method=RequestMethod.GET)
-	public String update(@PathVariable String username,Model model){
-		User user = users.get(username);
-		System.out.println("username:"+username);
-		System.out.println("user:"+user);
-		
+	@RequestMapping(value="/{id}/update",method=RequestMethod.GET)
+	public String update(@PathVariable int id,Model model){
+		User user = userService.load(id);
 		model.addAttribute(user);
 		return "user/update";
 	}
-	@RequestMapping(value="/{username}/update",method=RequestMethod.POST)
-	public String update(@PathVariable String username,@Validated User user,BindingResult br){
-		System.out.println("usernameUpdate:" +username);
+	@RequestMapping(value="/{id}/update",method=RequestMethod.POST)
+	public String update(@PathVariable int id,@Validated User user,BindingResult br,Model model){
+		System.out.println("11111");
 		if(br.hasErrors()){
 			return "user/update";
 		}
-		users.put(username, user);
+		User u = userService.load(id);
+		u.setNickname(user.getNickname());
+		u.setEmail(user.getEmail());
+		userService.update(u);
+		System.out.println("00000");
 		return "redirect:/user/users";
 	}
-	@RequestMapping(value="/{username}/delete",method=RequestMethod.GET)
-	public String delete(@PathVariable String username){
-		users.remove(username);
+	@RequestMapping(value="/{id}/delete",method=RequestMethod.GET)
+	public String delete(@PathVariable int id){
+		userService.delete(id);
 		return "redirect:/user/users";
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)

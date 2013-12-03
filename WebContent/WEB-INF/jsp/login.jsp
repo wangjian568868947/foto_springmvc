@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>用户登录</title>
 </head>
 <body>
-<form action="user/login" method="post">
+<form  method="post">
 	用户名：<input type="text" name="username">
 	密码：<input type="password" name="password"> 
 	<input type="submit">

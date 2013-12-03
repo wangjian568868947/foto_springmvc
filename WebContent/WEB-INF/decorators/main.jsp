@@ -12,13 +12,12 @@
 </head>
 <body>
 <h1><decorator:title/></h1>
-<!----><c:if test="${not empty loginUser}">
-
-当前用户:${loginUser.nickname }
-</c:if> 
+<c:if test="${not empty loginUser}">
 <a href="<%=request.getContextPath() %>/user/add">用户添加</a>
 <a href="<%=request.getContextPath() %>/user/users">用户列表</a>
 <a href="<%=request.getContextPath() %>/logout">退出系统</a>
+当前用户:${loginUser.nickname }
+</c:if> 
 <hr/>
 <decorator:body/>
 <div align="center" style="width:100%;border-top:1px solid; float:left;margin-top:10px;">

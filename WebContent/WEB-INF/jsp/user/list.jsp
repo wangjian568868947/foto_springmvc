@@ -22,16 +22,23 @@
 		<tr>
 			<td>用户标识</td><td>用户名</td><td>用户昵称</td><td>用户密码</td><td>用户邮箱</td><td>操作</td>
 		</tr>
-		<c:if test="${pages.total le 0 }">
+		<c:if test="${pagers.total le 0 }">
 			<tr>
 				<td colspan="6">目前还没有数据</td>
 			</tr>
 		</c:if>
-		<c:if test="${pages.total gt 0 }">
-		<c:forEach items="${pages.datas }" var = "u">
+		<c:if test="${pagers.total gt 0 }">
+		<c:forEach items="${pagers.datas }" var = "u">
 		<tr>
-			<td>${u.id}</td><td>${u.username}</td><td>${u.nickname }</td><td>${u.password }</td><td>${u.email }</td>
-			<td><a href="">更新</a><a href="">删除</a></td>
+			<td>${u.id}</td>
+			<td><a href="${u.id}">${u.username}</a></td>
+			<td>${u.nickname }</td>
+			<td>${u.password }</td>
+			<td>${u.email }</td>
+			<td>
+				<a href="${u.id }/update">更新</a>
+				<a href="${u.id }/delete">删除</a>
+			</td>
 		</tr>
 		</c:forEach>
 		<tr>
